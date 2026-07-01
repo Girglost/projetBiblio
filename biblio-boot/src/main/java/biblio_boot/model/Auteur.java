@@ -53,6 +53,7 @@ public class Auteur {
 
 	//constructeur vide
 	
+	public Auteur() {}
 	
     
 	
