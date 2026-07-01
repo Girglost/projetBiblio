@@ -2,11 +2,15 @@ package biblio_boot.model;
 
 import java.util.Collection;
 
+import org.hibernate.annotations.ManyToAny;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Livre {
@@ -20,11 +24,14 @@ public class Livre {
     private String resumer;
     @Column(name = "année", nullable=false)
     private int annee;
-    @Column(name = "auteur", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "auteur", nullable = false)
     private Auteur auteur;
-    @Column(name = "éditeur", nullable=false)
+    @ManyToOne
+    @JoinColumn(name = "éditeur", nullable=false)
     private Editeur editeur;
-    @Column(name = "collection", nullable=true)
+    @ManyToOne
+    @JoinColumn(name = "collection", nullable=true)
     private Collection collection;
 
     public Livre() {}
