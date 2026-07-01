@@ -18,8 +18,10 @@ public class SecurityConfig {
 
             // Les utilisateurs doivent être authentifiés pour accéder à /quelquechose
             auth.requestMatchers("/**").permitAll();
-        });
 
+        });
+        // Désactivation de la protection CSRF uniquement pour les ressources /api/**
+        http.csrf(csrf -> csrf.ignoringRequestMatchers("/api/**"));
         return http.build();
     }
 }
