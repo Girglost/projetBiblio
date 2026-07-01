@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import biblio_boot.model.Auteur;
-import biblio_boot.model.Livre;
 import biblio_boot.service.AuteurService;
 
 @RestController
