@@ -16,7 +16,7 @@ import biblio_boot.model.Editeur;
 import biblio_boot.service.EditeurService;
 
 @RestController
-@RequestMapping("/api/collection")
+@RequestMapping("/api/editeur")
 public class EditeurRestController {
     @Autowired
     EditeurService editeurSrv;

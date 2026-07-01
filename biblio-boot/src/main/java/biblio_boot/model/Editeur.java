@@ -8,7 +8,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
 @Entity
-
 public class Editeur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
