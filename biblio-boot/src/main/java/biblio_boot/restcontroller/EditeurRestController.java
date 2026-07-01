@@ -9,10 +9,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import biblio_boot.model.Editeur;
 import biblio_boot.service.EditeurService;
 
+@RestController
+@RequestMapping("/api/collection")
 public class EditeurRestController {
     @Autowired
     EditeurService editeurSrv;
