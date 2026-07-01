@@ -30,12 +30,12 @@ public class LivreRC {
         return livreSrv.getAll();
     }
 
-    @GetMapping("/${id}")
+    @GetMapping("/{id}")
     public Livre getById(@RequestParam Integer id) {
         return livreSrv.getById(id);
     }
 
-    @DeleteMapping("/${id}")
+    @DeleteMapping("/{id}")
     public void supprimer(@PathVariable Integer id)  
 	{
 		livreSrv.delete(id);
