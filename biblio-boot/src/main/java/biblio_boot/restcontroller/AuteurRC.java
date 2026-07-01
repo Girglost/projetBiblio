@@ -28,12 +28,12 @@ public class AuteurRC {
         return auteurSrv.getAllAuteurs();
     }
 
-@GetMapping("/${id}")
+@GetMapping("/{id}")
 public Auteur getById(@RequestParam Integer id) {
 	return auteurSrv.getById(id);
 }
 
-@DeleteMapping("/${id}")
+@DeleteMapping("/{id}")
 public void supprimer(@PathVariable Integer id)  
 {
 	auteurSrv.delete(id);
