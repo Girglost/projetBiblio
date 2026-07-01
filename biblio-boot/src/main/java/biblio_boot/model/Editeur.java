@@ -19,6 +19,9 @@ public class Editeur {
     @Column(name = "pays", nullable = false)
     private String pays;
 
+    public Editeur() {
+    }
+
     public Editeur(String nom, String pays) {
         this.nom = nom;
         this.pays = pays;

@@ -12,6 +12,9 @@ public class Collection {
     @Column(name = "nom", nullable = false)
     private String nom;
 
+    public Collection() {
+    }
+
     public Collection(String nom) {
         this.nom = nom;
     }
