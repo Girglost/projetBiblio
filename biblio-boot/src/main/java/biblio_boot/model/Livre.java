@@ -1,8 +1,6 @@
 package biblio_boot.model;
 
-import java.util.Collection;
 
-import org.hibernate.annotations.ManyToAny;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
