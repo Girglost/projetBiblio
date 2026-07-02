@@ -59,19 +59,25 @@
 
 
     <p>Auteur</p>
-    <input type="text" [formControl]="formCtrlAuteur">
+    <select [formControl]="formCtrlAuteur">
+      <option *ngfor="let auteur of auteurs$ |async"></option>
+    </select>
     <div *ngIf="formCtrlAuteur.invalid && formCtrlAuteur.dirty && formCtrlAuteur.hasError('minlength')">
         L'auteur du livre est obligatoire.
     </div>
 
     <p>Editeur</p>
-    <input type="text" [formControl]="formCtrlEditeur">
+    <select [formControl]="formCtrlEditeur">
+      <option *ngfor="let editeur of editeurs$ |async"></option>
+    </select>
     <div *ngIf="formCtrlEditeur.invalid && formCtrlEditeur.dirty && formCtrlEditeur.hasError('minlength')">
         L'éditeur du livre est obligatoire.
     </div>
 
     <p>Collection</p>
-    <input type="text" [formControl]="formCtrlCollection">
+    <select [formControl]="formCtrlCollection">
+      <option *ngfor="let collection of collections$ |async"></option>
+    </select>
 
 
     <div>
