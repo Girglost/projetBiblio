@@ -3,9 +3,9 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Observable, startWith, switchMap } from 'rxjs';
 import { Subject } from 'rxjs/internal/Subject';
-import { Editeur } from '../../model/editeur';
-import { EditeurService } from '../../service/editeur-service';
 import { Auteur } from '../../model/auteur';
+import { AuteurService } from '../../service/auteur-service';
+
 
 @Component({
   selector: 'app-auteur-page',
@@ -24,8 +24,12 @@ export class AuteurPage implements OnInit {
 // reactive forms
 
   private formBuilder: FormBuilder = inject(FormBuilder);
-  protected formCollection!: FormGroup;
+  protected formAuteur! : FormGroup;
   protected formCtrlNom!: FormControl;
+  protected formCtrlPrenom!: FormControl;
+  protected formCtrlNationalite!: FormControl;
+  protected editingAuteurId: number | undefined = 0;
+
 
   ngOnInit(): void {
     this.auteurs$ = this.refresh$.pipe(
@@ -44,6 +48,9 @@ export class AuteurPage implements OnInit {
     });
   }
 
+  private reload() {
+    this.refresh$.next();
+  }
 
    public addOrUpdate() {
     const auteur: Auteur = this.formAuteur.getRawValue();
