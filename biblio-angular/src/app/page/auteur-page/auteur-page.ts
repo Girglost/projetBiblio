@@ -3,9 +3,9 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Observable, startWith, switchMap } from 'rxjs';
 import { Subject } from 'rxjs/internal/Subject';
-import { Editeur } from '../../model/editeur';
-import { EditeurService } from '../../service/editeur-service';
 import { Auteur } from '../../model/auteur';
+import { AuteurService } from '../../service/auteur-service';
+
 
 @Component({
   selector: 'app-auteur-page',
