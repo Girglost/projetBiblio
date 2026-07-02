@@ -1,5 +1,7 @@
 package biblio_boot.model;
 
+import java.time.LocalDate;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -20,7 +22,7 @@ public class Avis {
 	private Integer id;
 
 	@Column(name = "note", nullable = false)
-	private String note;
+	private int note;
 
 	@Column(name = "commentaire", nullable = true)
 	private String commentaire;
@@ -28,13 +30,13 @@ public class Avis {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "date", nullable = false)
-	private String date;
+	private LocalDate date;
 
 	@ManyToOne
 	@JoinColumn(name = "livre_id", nullable = false)
 	private Livre livre;
 
-	public Avis(String note, String commentaire, String date, Livre livre) {
+	public Avis(int note, String commentaire, LocalDate date, Livre livre) {
 		this.note = note;
 		this.commentaire = commentaire;
 		this.date = date;
@@ -44,7 +46,6 @@ public class Avis {
 	public Avis() {
 	}
 
-	// getter_setter
 	public Integer getId() {
 		return id;
 	}
@@ -53,11 +54,11 @@ public class Avis {
 		this.id = id;
 	}
 
-	public String getNote() {
+	public int getNote() {
 		return note;
 	}
 
-	public void setNote(String note) {
+	public void setNote(int note) {
 		this.note = note;
 	}
 
@@ -69,11 +70,11 @@ public class Avis {
 		this.commentaire = commentaire;
 	}
 
-	public String getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 

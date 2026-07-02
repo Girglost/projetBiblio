@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Maven Package') {
+            agent {
+                docker {
+                    image 'node:20-alpine'
+                    // args '-v $HOME/.m2:/root/.m2:z -u root' // Pour garder le cache Maven
+                    reuseNode true // Permet de partager le même workspace que l'agent Jenkins
+                }
+            }
+
+            steps {
+                dir('projet-biblio/biblio-angular') {
+                    sh 'npm install'
+                    sh 'ng build'
+                }
+            }
+        }
+
+        stage('Docker build') {
+            steps {
+                dir('projet-biblio/biblio-angular') {
+                    sh 'docker build -t ajc/biblio-angular .'
+                }
+            }
+        }
+
+        stage('Docker compose') {
+            steps {
+                dir('projet-biblio/biblio-angular') {
+                    sh 'docker compose up -d'
+                }
+            }
+        }
+    }
+}
