@@ -49,6 +49,18 @@ export class LivrePage implements OnInit{
       startWith(0),
       switchMap(() => this.livreService.findAll())
     );
+    this.auteurs$ = this.refresh$.pipe(
+      startWith(0),
+      switchMap(() => this.auteurService.findAll())
+    );
+    this.editeurs$ = this.refresh$.pipe(
+      startWith(0),
+      switchMap(() => this.editeurService.findAll())
+    );
+    this.collections$ = this.refresh$.pipe(
+      startWith(0),
+      switchMap(() => this.collectionService.findAll())
+    );
 
     this.formCtrlTitre = this.formBuilder.control('', [Validators.required]);
     this.formCtrlResumer= this.formBuilder.control('');
@@ -82,6 +94,7 @@ export class LivrePage implements OnInit{
 
         });
       } else {
+        console.log(livre);
         this.livreService.add(livre).subscribe(() => {
           this.reload();
 
