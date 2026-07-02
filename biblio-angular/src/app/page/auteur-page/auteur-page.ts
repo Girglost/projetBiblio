@@ -24,8 +24,11 @@ export class AuteurPage implements OnInit {
 // reactive forms
 
   private formBuilder: FormBuilder = inject(FormBuilder);
-  protected formCollection!: FormGroup;
+  protected formAuteur! : FormGroup;
   protected formCtrlNom!: FormControl;
+  protected formCtrlPrenom!: FormControl;
+  protected formCtrlNationalite!: FormControl;
+  
 
   ngOnInit(): void {
     this.auteurs$ = this.refresh$.pipe(
