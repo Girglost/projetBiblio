@@ -61,7 +61,7 @@ public class SecurityConfig {
         // "Content-Type"));
         corsConfiguration.setAllowedHeaders(List.of("*"));
 
-        corsConfiguration.setAllowedOrigins(List.of("http://localhost:4200"));
+        corsConfiguration.setAllowedOrigins(List.of("http://localhost:4200", "http://localhost:81"));
 
         // Pour toutes les ressources, on applique la politique CORS définie plus haut
         corsSource.registerCorsConfiguration("/**", corsConfiguration);
