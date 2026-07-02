@@ -14,7 +14,7 @@ pipeline {
             steps {
                 dir('biblio-angular') {
                     sh 'npm install'
-                    sh 'ng build'
+                    sh './node_modules/.bin/ng build'
                 }
             }
         }
