@@ -44,39 +44,42 @@
 <form (submit)="addOrUpdate()" [formGroup]="formLivre">
     <p>Titre</p>
     <input type="text" [formControl]="formCtrlTitre">
-    <div *ngIf="formCtrlTitre.invalid && formCtrlTitre.dirty && formCtrlTitre.hasError('minlength')">
+    <div *ngIf="formCtrlTitre.invalid && formCtrlTitre.dirty ">
         Le titre du livre est obligatoire.
     </div>
 
     <p>Année</p>
     <input type="text" [formControl]="formCtrlAnnee">
-    <div *ngIf="formCtrlAnnee.invalid && formCtrlAnnee.dirty && formCtrlAnnee.hasError('minlength')">
+    <div *ngIf="formCtrlAnnee.invalid && formCtrlAnnee.dirty ">
         L'année du livre est obligatoire.
     </div>
 
     <p>Résumer</p>
-    <input type="text" [formControl]="formCtrlCollection">
+    <input type="text" [formControl]="formCtrlResumer">
 
 
     <p>Auteur</p>
     <select [formControl]="formCtrlAuteur">
-      <option *ngfor="let auteur of auteurs$ |async" [value]="auteur.id">{{auteur.prenom}} {{auteur.nom}}</option>
+      <option value="">--- Auteurs ---</option>
+      <option *ngFor="let auteur of auteurs$ |async" [ngValue]="auteur">{{auteur.prenom}} {{auteur.nom}}</option>
     </select>
-    <div *ngIf="formCtrlAuteur.invalid && formCtrlAuteur.dirty && formCtrlAuteur.hasError('minlength')">
+    <div *ngIf="formCtrlAuteur.invalid && formCtrlAuteur.dirty">
         L'auteur du livre est obligatoire.
     </div>
 
     <p>Editeur</p>
     <select [formControl]="formCtrlEditeur">
-      <option *ngfor="let editeur of editeurs$ |async" [value]="editeur.id">{{editeur.nom}}</option>
+      <option value="">--- Editeurs ---</option>
+      <option *ngFor="let editeur of editeurs$ |async" [ngValue]="editeur">{{editeur.nom}}</option>
     </select>
-    <div *ngIf="formCtrlEditeur.invalid && formCtrlEditeur.dirty && formCtrlEditeur.hasError('minlength')">
+    <div *ngIf="formCtrlEditeur.invalid && formCtrlEditeur.dirty">
         L'éditeur du livre est obligatoire.
     </div>
 
     <p>Collection</p>
     <select [formControl]="formCtrlCollection">
-      <option *ngfor="let collection of collections$ |async" [value]="collection.id">{{collection.nom}}</option>
+      <option value="">--- Collections ---</option>
+      <option *ngFor="let collection of collections$ |async" [ngValue]="collection">{{collection.nom}}</option>
     </select>
 
 
