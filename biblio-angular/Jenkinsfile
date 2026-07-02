@@ -12,7 +12,7 @@ pipeline {
             }
 
             steps {
-                dir('projet-biblio/biblio-angular') {
+                dir('biblio-angular') {
                     sh 'npm install'
                     sh 'ng build'
                 }
@@ -21,7 +21,7 @@ pipeline {
 
         stage('Docker build') {
             steps {
-                dir('projet-biblio/biblio-angular') {
+                dir('biblio-angular') {
                     sh 'docker build -t ajc/biblio-angular .'
                 }
             }
@@ -29,7 +29,7 @@ pipeline {
 
         stage('Docker compose') {
             steps {
-                dir('projet-biblio/biblio-angular') {
+                dir('biblio-angular') {
                     sh 'docker compose up -d'
                 }
             }
