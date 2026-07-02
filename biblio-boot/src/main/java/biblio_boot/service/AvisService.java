@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import biblio_boot.dao.AvisDAO;
 import biblio_boot.model.Avis;
 
+@Service
 public class AvisService {
     
 
