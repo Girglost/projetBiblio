@@ -60,7 +60,7 @@
 
     <p>Auteur</p>
     <select [formControl]="formCtrlAuteur">
-      <option *ngfor="let auteur of auteurs$ |async"></option>
+      <option *ngfor="let auteur of auteurs$ |async" [value]="auteur.id">{{auteur.prenom}} {{auteur.nom}}</option>
     </select>
     <div *ngIf="formCtrlAuteur.invalid && formCtrlAuteur.dirty && formCtrlAuteur.hasError('minlength')">
         L'auteur du livre est obligatoire.
@@ -68,7 +68,7 @@
 
     <p>Editeur</p>
     <select [formControl]="formCtrlEditeur">
-      <option *ngfor="let editeur of editeurs$ |async"></option>
+      <option *ngfor="let editeur of editeurs$ |async" [value]="editeur.id">{{editeur.nom}}</option>
     </select>
     <div *ngIf="formCtrlEditeur.invalid && formCtrlEditeur.dirty && formCtrlEditeur.hasError('minlength')">
         L'éditeur du livre est obligatoire.
@@ -76,7 +76,7 @@
 
     <p>Collection</p>
     <select [formControl]="formCtrlCollection">
-      <option *ngfor="let collection of collections$ |async"></option>
+      <option *ngfor="let collection of collections$ |async" [value]="collection.id">{{collection.nom}}</option>
     </select>
 
 
