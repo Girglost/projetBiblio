@@ -14,9 +14,9 @@ export class Navigation {
 
   public disconnect() {
     console.log('disconnect');
-    /* 
+
      this.authService.disconnect();
      this.router.navigate([ 'login' ]);
-     */
+
   }
 }
