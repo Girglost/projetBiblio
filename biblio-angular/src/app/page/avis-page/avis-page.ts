@@ -23,6 +23,8 @@ export class AvisPage implements OnInit {
   private refresh$: Subject<void> = new Subject<void>();
 
   protected livres$!: Observable<Livre[]>;
+  protected avis$!: Observable<Avis[]>;
+
   protected notesDisponibles: number[] = [1, 2, 3, 4, 5];
   protected avisForm: FormGroup = this.formBuilder.group({
     livre: ['', Validators.required],
@@ -35,8 +37,12 @@ export class AvisPage implements OnInit {
 
   ngOnInit(): void {
     this.livres$ = this.livreService.findAll();
+    this.avis$ = this.refresh$
+      .pipe(
+        startWith(undefined),
+        switchMap(() => this.avisService.findAll()),
+      );
 
-    this.refresh$.pipe(startWith(undefined),switchMap(() => this.avisService.findAll()),).subscribe();
   }
 
   protected addOrUpdate() {

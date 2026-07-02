@@ -14,10 +14,10 @@ export class AvisService {
 
 
   private http: HttpClient = inject(HttpClient);
-  private apiUrl: string = "/livres";
+  private apiUrl: string = "/avis";
 
-  public findAll(): Observable<Livre[]> {
-    return this.http.get<Livre[]>(this.apiUrl);
+  public findAll(): Observable<Avis[]> {
+    return this.http.get<Avis[]>(this.apiUrl);
   }
 
     public add(avis: Avis): Observable<Avis> {

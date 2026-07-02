@@ -31,3 +31,31 @@
   </button>
 
 </form>
+
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Livre</th>
+      <th>Note</th>
+      <th>Commentaire</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let avis of avis$ | async">
+      <td>{{ avis.id }}</td>
+      <td>{{ avis.livre }}</td>
+      <td>{{ avis.note }}</td>
+      <td>{{ avis.commentaire }}</td>
+      <td>
+         <button (click)="remove(avis)">Supprimer
+
+         </button></td>
+
+    </tr>
+  </tbody>
+</table>
