@@ -44,6 +44,9 @@ export class AuteurPage implements OnInit {
     });
   }
 
+  private reload() {
+    this.refresh$.next();
+  }
 
    public addOrUpdate() {
     const auteur: Auteur = this.formAuteur.getRawValue();
