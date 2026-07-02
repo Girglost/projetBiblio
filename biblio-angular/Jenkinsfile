@@ -5,7 +5,7 @@ pipeline {
         stage('Maven Package') {
             agent {
                 docker {
-                    image 'node:20-alpine'
+                    image 'node:24-alpine'
                     // args '-v $HOME/.m2:/root/.m2:z -u root' // Pour garder le cache Maven
                     reuseNode true // Permet de partager le même workspace que l'agent Jenkins
                 }
