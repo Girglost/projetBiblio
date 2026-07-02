@@ -1,1 +1,13 @@
-<p>LOGIN !!</p>
+<h1>CONNEXION</h1>
+
+<form (submit)="auth()" [formGroup]="formAuth">
+    <input type="text" [formControl]="formCtrlUsername">
+    <input type="password" [formControl]="formCtrlPassword">
+
+    @if (loginError()) {
+    <div>Nom d'utilisateur ou mot de passe incorrect !</div>
+    }
+    <div>
+        <input type="submit" value="Se connecter" [disabled]="formAuth.invalid" />
+    </div>
+</form>

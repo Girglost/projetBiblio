@@ -33,4 +33,8 @@ public class UtilisateurService {
         daoUtilisateur.deleteById(id);
     }
 
+    public Utilisateur getByLogin(String login) {
+        return daoUtilisateur.findByLogin(login);
+    }
+
 }
