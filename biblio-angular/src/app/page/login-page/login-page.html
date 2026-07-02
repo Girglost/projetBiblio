@@ -1,7 +1,7 @@
 <h1>CONNEXION</h1>
 
 <form (submit)="auth()" [formGroup]="formAuth">
-    <input type="text" [formControl]="formCtrlUsername">
+    <input type="text" [formControl]="formCtrlLogin">
     <input type="password" [formControl]="formCtrlPassword">
 
     @if (loginError()) {

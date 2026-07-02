@@ -22,6 +22,7 @@ export class AuthService {
   }
 
   public auth(request: AuthRequest): Observable<void> {
+    console.log(request);
     return new Observable<void>(observer => {
       this.http.post<AuthResponse>('/auth', request).subscribe({
         next: resp => {

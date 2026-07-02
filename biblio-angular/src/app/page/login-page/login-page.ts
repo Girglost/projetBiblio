@@ -12,18 +12,18 @@ import { AuthService } from '../../service/auth-service';
 })
 export class LoginPage implements OnInit {
   protected formAuth!: FormGroup;
-  protected formCtrlUsername!: FormControl;
+  protected formCtrlLogin!: FormControl;
   protected formCtrlPassword!: FormControl;
   protected loginError = signal(false);
 
   constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.formCtrlUsername = this.formBuilder.control('', Validators.required);
+    this.formCtrlLogin = this.formBuilder.control('', Validators.required);
     this.formCtrlPassword = this.formBuilder.control('', Validators.required);
 
     this.formAuth = this.formBuilder.group({
-      username: this.formCtrlUsername,
+      login: this.formCtrlLogin,
       password: this.formCtrlPassword
     });
   }
@@ -31,7 +31,7 @@ export class LoginPage implements OnInit {
 
   public auth() {
     this.authService.auth(this.formAuth.getRawValue()).subscribe({
-      next: () => this.router.navigate(['matiere']),
+      next: () => this.router.navigate(['livre']),
       error: () => this.loginError.set(true)
     });
   }
