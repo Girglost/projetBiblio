@@ -6,9 +6,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Avis {
@@ -28,10 +30,11 @@ public class Avis {
 	@Column(name = "date", nullable = false)
 	private String date;
 
-	@Column(name = "livre", nullable = false)
-	private String livre;
+	@ManyToOne
+	@JoinColumn(name = "livre_id", nullable = false)
+	private Livre livre;
 
-	public Avis(String note, String commentaire, String date, String livre) {
+	public Avis(String note, String commentaire, String date, Livre livre) {
 		this.note = note;
 		this.commentaire = commentaire;
 		this.date = date;
@@ -74,11 +77,11 @@ public class Avis {
 		this.date = date;
 	}
 
-	public String getLivre() {
+	public Livre getLivre() {
 		return livre;
 	}
 
-	public void setLivre(String livre) {
+	public void setLivre(Livre livre) {
 		this.livre = livre;
 	}
 

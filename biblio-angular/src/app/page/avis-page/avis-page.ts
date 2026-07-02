@@ -45,28 +45,32 @@ export class AvisPage implements OnInit {
 
   }
 
-  protected addOrUpdate() {
-    if (this.avisForm.invalid) {
-      return;
-    }
-
-    const avis: Avis = this.avisForm.getRawValue();
-
-    if (this.editingAvisId) {
-      avis.id = this.editingAvisId;
-      this.avisService.update(avis).subscribe(() => this.reload());
-    } else {
-      this.avisService.add(avis).subscribe(() => this.reload());
-    }
-
-    this.avisForm.reset();
-    this.editingAvisId = undefined;
+protected addOrUpdate() {
+  if (this.avisForm.invalid) {
+    return;
   }
+
+  const formValue = this.avisForm.getRawValue();
+  const avis: Avis = {
+    ...formValue,
+    livre: { id: formValue.livre } as Livre,
+  };
+
+  if (this.editingAvisId) {
+    avis.id = this.editingAvisId;
+    this.avisService.update(avis).subscribe(() => this.reload());
+  } else {
+    this.avisService.add(avis).subscribe(() => this.reload());
+  }
+
+  this.avisForm.reset();
+  this.editingAvisId = undefined;
+}
 
   protected edit(avis: Avis) {
     this.editingAvisId = avis.id;
     this.avisForm.patchValue({
-      livre: avis.livre,
+      livre: avis.livre?.id,
       note: avis.note,
       date: avis.date,
       commentaire: avis.commentaire,

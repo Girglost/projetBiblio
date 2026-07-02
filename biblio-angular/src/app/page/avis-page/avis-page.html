@@ -48,7 +48,7 @@
   <tbody>
     <tr *ngFor="let avis of avis$ | async">
       <td>{{ avis.id }}</td>
-      <td>{{ avis.livre }}</td>
+      <td>{{ avis.livre?.titre }}</td>
       <td>{{ avis.note }}</td>
       <td>{{ avis.commentaire }}</td>
       <td>
