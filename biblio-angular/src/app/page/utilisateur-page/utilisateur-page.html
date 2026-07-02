@@ -1,0 +1,49 @@
+<div>Liste des Utilisateurs</div>
+
+<table>
+    <thead>
+        <tr>
+            <td>
+                Id
+            </td>
+            <td>
+                Login
+            </td>
+            <td>
+                Password
+            </td>
+            <td>
+                Actions
+            </td>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let utilisateur of utilisateurs$ | async">
+            <td>{{ utilisateur.id }}</td>
+            <td>{{ utilisateur.login }}</td>
+            <td>{{ utilisateur.password }}</td>
+            <td>
+                <button (click)="edit(utilisateur)">MODIFIER</button>
+                <button (click)="remove(utilisateur)">SUPPRIMER</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<form (submit)="addOrUpdate()" [formGroup]="formUtilisateur">
+    <input type="text" [formControl]="formCtrlLogin">
+    <div *ngIf="formCtrlLogin.invalid && formCtrlLogin.dirty && formCtrlLogin.hasError('minlength')">
+        Le nom de la utilisateur est obligatoire.
+    </div>
+
+    <input type="text" [formControl]="formCtrlPassword">
+    <div *ngIf="formCtrlPassword.invalid && formCtrlPassword.dirty && formCtrlPassword.hasError('minlength')">
+        Le nom de la utilisateur est obligatoire.
+    </div>
+
+    <div>
+        <input [disabled]="formUtilisateur.invalid" type="submit"
+            [value]="editingUtilisateurId ? 'Modifier' : 'Ajouter'" />
+    </div>
+</form>
