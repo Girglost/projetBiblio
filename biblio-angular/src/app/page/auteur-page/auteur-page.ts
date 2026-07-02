@@ -28,7 +28,8 @@ export class AuteurPage implements OnInit {
   protected formCtrlNom!: FormControl;
   protected formCtrlPrenom!: FormControl;
   protected formCtrlNationalite!: FormControl;
-  
+  protected editingAuteurId: number | undefined = 0;
+
 
   ngOnInit(): void {
     this.auteurs$ = this.refresh$.pipe(
