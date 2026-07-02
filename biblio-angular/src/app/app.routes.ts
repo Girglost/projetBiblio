@@ -16,6 +16,6 @@ export const routes: Routes = [
   { path: "collection", component: CollectionPage, canActivate: [authGuard] },
   { path: "utilisateur", component: UtilisateurPage, canActivate: [authGuard] },
   { path: "avis", component: AvisPage, canActivate: [authGuard] },
-  { path: "login", component: LoginPage, canActivate: [authGuard] }
+  { path: "login", component: LoginPage}
 
 ];
