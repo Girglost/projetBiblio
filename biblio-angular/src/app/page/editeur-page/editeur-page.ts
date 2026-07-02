@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Observable, startWith, switchMap } from 'rxjs';
 import { Subject } from 'rxjs/internal/Subject';
 import { Editeur } from '../../model/editeur';
@@ -30,8 +30,8 @@ export class EditeurPage implements OnInit {
       switchMap(() => this.editeurService.findAll())
     );
 
-    this.formCtrlNom = this.formBuilder.control('');
-    this.formCtrlPays = this.formBuilder.control('');
+    this.formCtrlNom = this.formBuilder.control('', [Validators.required, Validators.minLength(3)]);
+    this.formCtrlPays = this.formBuilder.control('', [Validators.required, Validators.minLength(3)]);
     this.formEditeur = this.formBuilder.group({
       nom: this.formCtrlNom,
       pays: this.formCtrlPays,
@@ -45,6 +45,7 @@ export class EditeurPage implements OnInit {
     const editeur: Editeur = this.formEditeur.getRawValue();
 
     if (this.editingEditeurId) {
+      editeur.id = this.editingEditeurId;
       this.editeurService.update(editeur).subscribe(() => {
         this.reload();
       });
@@ -61,5 +62,11 @@ export class EditeurPage implements OnInit {
     this.editingEditeurId = editeur.id;
     this.formCtrlNom.setValue(editeur.nom);
     this.formCtrlPays.setValue(editeur.pays);
+  }
+
+  public remove(editeur: Editeur) {
+    this.editeurService.remove(editeur).subscribe(() => {
+      this.reload();
+    });
   }
 }

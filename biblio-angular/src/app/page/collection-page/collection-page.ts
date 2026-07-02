@@ -34,12 +34,12 @@ export class CollectionPage implements OnInit {
     );
 
     // Reactive Form
-    this.formCtrlNom = this.formBuilder.control('', [Validators.required, Validators.minLength(6)]);
+    this.formCtrlNom = this.formBuilder.control('', [Validators.required, Validators.minLength(3)]);
 
     this.formCollection = this.formBuilder.group({
       // Ajout des différents contrôles == input, select, etc.
       // libelle: this.formBuilder.control('', Validators.required)
-      libelle: this.formCtrlNom
+      nom: this.formCtrlNom
     });
 
   }

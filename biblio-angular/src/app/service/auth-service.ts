@@ -1,15 +1,11 @@
-import { OnInit, Service } from '@angular/core';
+import { Injectable } from '@angular/core';
 
-@Service()
-export class AuthService implements OnInit {
+@Injectable({
+  providedIn: 'root',
+})
+export class AuthService {
 
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-  disconnect() {
-    throw new Error('Method not implemented.');
-  }
-  isLogged() {
-  throw new Error('Method not implemented.');
+  public isLogged(): boolean {
+    return true;
   }
 }

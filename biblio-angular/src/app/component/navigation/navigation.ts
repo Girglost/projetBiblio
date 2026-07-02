@@ -13,7 +13,10 @@ export class Navigation {
   private router: Router = inject(Router);
 
   public disconnect() {
-    this.authService.disconnect();
-    this.router.navigate([ 'login' ]);
+    console.log('disconnect');
+    /* 
+     this.authService.disconnect();
+     this.router.navigate([ 'login' ]);
+     */
   }
 }
