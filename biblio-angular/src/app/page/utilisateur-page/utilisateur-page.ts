@@ -16,10 +16,10 @@ export class UtilisateurPage implements OnInit{
   private refresh$: Subject<void> = new Subject<void>();
 
   private utilisateurService : UtilisateurService = inject(UtilisateurService);
-  protected utilisateurs$!: Observable<Utilisateur>;
+  protected utilisateurs$!: Observable<Utilisateur[]>;
 
   private formBuilder : FormBuilder = inject(FormBuilder);
-  protected formUtilisateur : FormGroup;
+  protected formUtilisateur! : FormGroup;
   protected formCtrlLogin!: FormControl;
   protected formCtrlPassword!: FormControl;
   protected editingUtilisateurId: number | undefined = 0;
