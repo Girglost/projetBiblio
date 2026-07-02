@@ -1,5 +1,4 @@
 <form [formGroup]="avisForm" (ngSubmit)="addOrUpdate()">
-
   <label for="livre">Livre :</label>
   <select id="livre" formControlName="livre">
     <option value="" disabled selected>-- Choisir un livre --</option>
@@ -13,15 +12,11 @@
     <option value="" disabled selected>-- Choisir une note --</option>
     <option *ngFor="let notes of notesDisponibles" [value]="notes">{{ notes }}</option>
   </select>
-  <div *ngIf="avisForm.get('note')?.invalid && avisForm.get('note')?.touched">
-    Note invalide
-  </div>
+  <div *ngIf="avisForm.get('note')?.invalid && avisForm.get('note')?.touched">Note invalide</div>
 
   <label for="date">Date :</label>
-  <input id="date" formControlName="date" type="date">
-  <div *ngIf="avisForm.get('date')?.invalid && avisForm.get('date')?.touched">
-    Date obligatoire
-  </div>
+  <input id="date" formControlName="date" type="date" />
+  <div *ngIf="avisForm.get('date')?.invalid && avisForm.get('date')?.touched">Date obligatoire</div>
 
   <label for="commentaire">Commentaire :</label>
   <textarea id="commentaire" formControlName="commentaire"></textarea>
@@ -29,7 +24,6 @@
   <button type="submit" [disabled]="avisForm.invalid">
     {{ editingAvisId ? 'Modifier' : 'Ajouter' }}
   </button>
-
 </form>
 
 <hr />
@@ -52,12 +46,9 @@
       <td>{{ avis.note }}</td>
       <td>{{ avis.commentaire }}</td>
       <td>
-         <button (click)="remove(avis)">Supprimer
-
-         </button></td>
-<td><button (click)="edit(avis)">Modifier
-
-         </button></td>
+        <button (click)="remove(avis)">Supprimer</button>
+      </td>
+      <td><button (click)="edit(avis)">Modifier</button></td>
     </tr>
   </tbody>
 </table>

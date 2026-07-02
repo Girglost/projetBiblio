@@ -60,6 +60,7 @@ protected addOrUpdate() {
     avis.id = this.editingAvisId;
     this.avisService.update(avis).subscribe(() => this.reload());
   } else {
+    console.log(avis);
     this.avisService.add(avis).subscribe(() => this.reload());
   }
 
