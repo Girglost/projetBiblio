@@ -1,9 +1,15 @@
+import { AuteurService } from './../../service/auteur-service';
 import { LivreService } from './../../service/livre-service';
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Observable, startWith, Subject, switchMap, TimeoutError } from 'rxjs';
 import { Livre } from '../../model/livre';
+import { EditeurService } from '../../service/editeur-service';
+import { CollectionService } from '../../service/collection-service';
+import { Editeur } from '../../model/editeur';
+import { Collection } from '../../model/collection';
+import { Auteur } from '../../model/auteur';
 
 @Component({
   selector: 'app-livre-page',
@@ -16,7 +22,14 @@ export class LivrePage implements OnInit{
   private refresh$: Subject<void> = new Subject<void>();
 
   private livreService : LivreService = inject(LivreService);
+  private auteurService : AuteurService = inject(AuteurService);
+  private editeurService : EditeurService = inject(EditeurService);
+  private collectionService : CollectionService = inject(CollectionService);
+
   protected livres$!: Observable<Livre[]>;
+  protected auteurs$!: Observable<Auteur[]>;
+  protected editeurs$!: Observable<Editeur[]>;
+  protected collections$!: Observable<Collection[]>;
 
   private formBuilder : FormBuilder = inject(FormBuilder);
   protected formLivre! : FormGroup;
