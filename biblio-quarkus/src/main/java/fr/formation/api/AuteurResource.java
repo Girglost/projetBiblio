@@ -48,7 +48,7 @@ public class AuteurResource {
     @Transactional
     @POST
     public Response create(@Valid CreateOrUpdateAuteurRequest request) {
-        log.debug("Création d'une nouvelle matière ...");
+        log.debug("Création d'un nouveau Auteur ...");
 
         Auteur auteur = new Auteur();
 
@@ -69,7 +69,7 @@ public class AuteurResource {
     @PUT
     @Path("/{id}")
     public Response update(@PathParam("id") Integer id, @Valid CreateOrUpdateAuteurRequest request) {
-        log.debug("Modification de la matière {} ...", id);
+        log.debug("Modification de l'auteur'{} ...", id);
 
         Auteur auteur = this.repository.findByIdOptional(id).orElseThrow(NotFoundException::new);
 
