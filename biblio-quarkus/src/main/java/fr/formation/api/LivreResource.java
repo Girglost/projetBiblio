@@ -80,13 +80,8 @@ public class LivreResource {
         
         log.debug("Livre créée !");
 
-<<<<<<< Updated upstream
-        return Response.status(Response.Status.CREATED)
-                .entity(Map.of("id", livre.getId()))
-                .build();
-=======
         return new EntityCreatedResponse(livre.getId());
->>>>>>> Stashed changes
+
     }
 
     @Transactional
