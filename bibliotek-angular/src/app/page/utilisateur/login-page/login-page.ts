@@ -5,7 +5,7 @@ import { AjcTextField } from '../../../component/form';
 import { AuthService } from '../../../service/auth-service';
 
 @Component({
-  imports: [ ReactiveFormsModule, AjcTextField, RouterLink ],
+  imports: [ReactiveFormsModule, AjcTextField, RouterLink],
   templateUrl: './login-page.html',
   styleUrl: './login-page.css',
 })
@@ -26,10 +26,10 @@ export class LoginPage implements OnInit {
 
   ngOnInit(): void {
     this.usernameCtrl = this.formBuilder.control('', Validators.required);
-    this.passwordCtrl = this.formBuilder.control('', [ Validators.required, Validators.minLength(6) ]);
+    this.passwordCtrl = this.formBuilder.control('', [Validators.required, Validators.minLength(6)]);
 
     this.userForm = this.formBuilder.group({
-      username: this.usernameCtrl,
+      login: this.usernameCtrl,
       password: this.passwordCtrl
     });
   }
@@ -45,7 +45,7 @@ export class LoginPage implements OnInit {
         }
 
         this.authService.token = resp.token;
-        this.router.navigate([ '/livre' ]);
+        this.router.navigate(['/livre']);
       },
 
       // error => si la réponse est KO (30X, 40X, 50X)
