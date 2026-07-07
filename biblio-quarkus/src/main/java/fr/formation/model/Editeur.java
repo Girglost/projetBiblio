@@ -1,5 +1,6 @@
 package fr.formation.model;
 
+import fr.formation.enumerator.NationaliteEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,12 +17,12 @@ public class Editeur {
     @Column(name = "nom", nullable = false)
     private String nom;
     @Column(name = "pays", nullable = false)
-    private String pays;
+    private NationaliteEnum pays;
 
     public Editeur() {
     }
 
-    public Editeur(String nom, String pays) {
+    public Editeur(String nom, NationaliteEnum pays) {
         this.nom = nom;
         this.pays = pays;
     }
@@ -34,11 +35,11 @@ public class Editeur {
         this.nom = nom;
     }
 
-    public String getPays() {
+    public NationaliteEnum getPays() {
         return pays;
     }
 
-    public void setPays(String pays) {
+    public void setPays(NationaliteEnum pays) {
         this.pays = pays;
     }
 

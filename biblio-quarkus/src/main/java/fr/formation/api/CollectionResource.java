@@ -14,7 +14,7 @@ import fr.formation.repo.EditeurRepository;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.PathParam;
 
-public class EditeurResource {
+public class CollectionResource {
     private static Logger log = LoggerFactory.getLogger(EditeurResource.class);
     private final EditeurRepository repo;
 
