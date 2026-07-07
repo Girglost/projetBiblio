@@ -19,7 +19,7 @@ services:
       interval: 5s
 
   java:
-    image: ajc/biblio-boot
+    image: ajc/biblio-quarkus
 
     networks:
       - biblio
