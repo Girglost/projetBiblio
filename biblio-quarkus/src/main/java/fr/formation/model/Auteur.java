@@ -1,16 +1,16 @@
 package fr.formation.model;
 
-import org.hibernate.annotations.UuidGenerator;
-
 import fr.formation.enumerator.NationaliteEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Auteur {
     @Id
-    @UuidGenerator
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(nullable = false)
