@@ -82,9 +82,8 @@ public class LivreResource {
         log.debug("Livre créée !");
 
         return Response.status(Response.Status.CREATED)
-            .entity(Map.of("id", livre.getId()))
-            .build()
-        ;
+                .entity(Map.of("id", livre.getId()))
+                .build();
     }
 
     @Transactional
