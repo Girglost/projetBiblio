@@ -1,7 +1,6 @@
 package fr.formation.api;
 
 import java.util.List;
-import java.util.Map;
 
 import fr.formation.dto.request.CreateOrUpdateLivreRequest;
 import fr.formation.dto.response.EntityCreatedResponse;
@@ -81,9 +80,13 @@ public class LivreResource {
         
         log.debug("Livre créée !");
 
+<<<<<<< Updated upstream
         return Response.status(Response.Status.CREATED)
                 .entity(Map.of("id", livre.getId()))
                 .build();
+=======
+        return new EntityCreatedResponse(livre.getId());
+>>>>>>> Stashed changes
     }
 
     @Transactional
@@ -105,7 +108,7 @@ public class LivreResource {
 
         log.debug("Livre modifiée !");
 
-        return Response.ok(Map.of("id", livre.getId())).build();
+        return new EntityUpdatedResponse(id, true);
     }
 
     @Transactional
