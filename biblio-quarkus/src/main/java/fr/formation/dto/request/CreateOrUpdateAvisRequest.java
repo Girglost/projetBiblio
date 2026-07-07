@@ -1,7 +1,6 @@
 package fr.formation.dto.request;
 
 import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 
@@ -13,7 +12,7 @@ public class CreateOrUpdateAvisRequest {
 
     private String commentaire;
 
-    @NotBlank
+    @NotNull
     private Integer livreId;
 
     public Integer getNote() {

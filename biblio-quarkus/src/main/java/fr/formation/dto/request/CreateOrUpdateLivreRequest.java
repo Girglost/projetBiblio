@@ -17,10 +17,10 @@ public class CreateOrUpdateLivreRequest {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate publication;
 
-    @NotBlank
+    @NotNull
     private Integer auteurId;
 
-    @NotBlank
+    @NotNull
     private Integer editeurId;
 
     private Integer collectionId;
