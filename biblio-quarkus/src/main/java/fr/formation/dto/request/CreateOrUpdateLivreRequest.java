@@ -18,12 +18,12 @@ public class CreateOrUpdateLivreRequest {
     private LocalDate publication;
 
     @NotBlank
-    private String auteurId;
+    private Integer auteurId;
 
     @NotBlank
-    private String editeurId;
+    private Integer editeurId;
 
-    private String collectionId;
+    private Integer collectionId;
 
     public String getNom() {
         return nom;
@@ -49,27 +49,27 @@ public class CreateOrUpdateLivreRequest {
         this.publication = publication;
     }
 
-    public String getAuteurId() {
+    public Integer getAuteurId() {
         return auteurId;
     }
 
-    public void setAuteurId(String auteurId) {
+    public void setAuteurId(Integer auteurId) {
         this.auteurId = auteurId;
     }
 
-    public String getEditeurId() {
+    public Integer getEditeurId() {
         return editeurId;
     }
 
-    public void setEditeurId(String editeurId) {
+    public void setEditeurId(Integer editeurId) {
         this.editeurId = editeurId;
     }
 
-    public String getCollectionId() {
+    public Integer getCollectionId() {
         return collectionId;
     }
 
-    public void setCollectionId(String collectionId) {
+    public void setCollectionId(Integer collectionId) {
         this.collectionId = collectionId;
     }
 }

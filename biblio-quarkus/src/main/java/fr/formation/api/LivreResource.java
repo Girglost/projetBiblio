@@ -3,7 +3,14 @@ package fr.formation.api;
 import java.util.List;
 import java.util.Map;
 
+import fr.formation.dto.request.CreateOrUpdateLivreRequest;
+import fr.formation.dto.response.EntityCreatedResponse;
+import fr.formation.dto.response.EntityUpdatedResponse;
+import fr.formation.dto.response.LivreResponse;
 import fr.formation.model.Livre;
+import fr.formation.repo.AuteurRepository;
+import fr.formation.repo.CollectionRepository;
+import fr.formation.repo.EditeurRepository;
 import fr.formation.repo.LivreRepository;
 import io.vertx.core.impl.logging.Logger;
 import io.vertx.core.impl.logging.LoggerFactory;
@@ -21,9 +28,16 @@ import jakarta.ws.rs.PathParam;
 public class LivreResource {
     private static Logger log = LoggerFactory.getLogger(LivreResource.class);
     private final LivreRepository repository;
+    private final AuteurRepository autRepository;
+    private final EditeurRepository ediRepository;
+    private final CollectionRepository colRepository;
 
-    public LivreResource(LivreRepository repository) {
+
+    public LivreResource(LivreRepository repository,AuteurRepository autRepository, EditeurRepository ediRepository, CollectionRepository colRepository) {
         this.repository = repository;
+        this.autRepository = autRepository;
+        this.ediRepository = ediRepository;
+        this.colRepository = colRepository;
     }
 
     @GET
@@ -36,31 +50,36 @@ public class LivreResource {
     @GET
     @Path("/{id}")
     public LivreResponse findById(@PathParam("id") Integer id) {
-        log.debug("Recherche du livre {} ...", id);
+        log.debug("Recherche du livre ...");
 
         return LivreResponse.convert(this.repository.findByIdOptional(id).orElseThrow(NotFoundException::new));
     }
 
     @GET
-    @Path("/by-titre/{titre}")
-    public LivreResponse findByLibelle(@PathParam("titre") String titre) {
-        log.debug("Recherche du livre {} ...", titre);
+    @Path("/by-nom/{nom}")
+    public LivreResponse findByLibelle(@PathParam("nom") String titre) {
+        log.debug("Recherche du livre ...");
 
         return LivreResponse.convert(this.repository.findByTitre(titre).orElseThrow(NotFoundException::new));
     }
 
     @Transactional
     @POST
-    public Response create(@Valid CreateOrUpdateLivreRequest request) {
+    public EntityCreatedResponse create(@Valid CreateOrUpdateLivreRequest request) {
         log.debug("Création d'un nouveau livre ...");
 
         Livre livre = new Livre();
 
-        livre.setLibelle(request.libelle());
+        livre.setNom(request.getNom());
+        livre.setResume(request.getResume());
+        livre.setPublication(request.getPublication());
+        livre.setAuteur(this.autRepository.findById(request.getAuteurId()));
+        livre.setEditeur(this.ediRepository.findById(request.getEditeurId()));
+        livre.setCollection(this.colRepository.findById(request.getCollectionId()));
 
         this.repository.persist(livre);
-
-        log.debug("Matière créée !");
+        
+        log.debug("Livre créée !");
 
         return Response.status(Response.Status.CREATED)
             .entity(Map.of("id", livre.getId()))
@@ -71,16 +90,21 @@ public class LivreResource {
     @Transactional
     @PUT
     @Path("/{id}")
-    public Response update(@PathParam("id") Integer id, @Valid CreateOrUpdateLivreRequest request) {
-        log.debug("Modification de la matière {} ...", id);
+    public EntityUpdatedResponse update(@PathParam("id") Integer id, @Valid CreateOrUpdateLivreRequest request) {
+        log.debug("Modification du livre ...");
 
         Livre livre = this.repository.findByIdOptional(id).orElseThrow(NotFoundException::new);
 
-        livre.setLibelle(request.libelle());
+        livre.setNom(request.getNom());
+        livre.setResume(request.getResume());
+        livre.setPublication(request.getPublication());
+        livre.setAuteur(this.autRepository.findById(request.getAuteurId()));
+        livre.setEditeur(this.ediRepository.findById(request.getEditeurId()));
+        livre.setCollection(this.colRepository.findById(request.getCollectionId()));
 
         this.repository.persist(livre);
 
-        log.debug("Matière modifiée !");
+        log.debug("Livre modifiée !");
 
         return Response.ok(Map.of("id", livre.getId())).build();
     }
@@ -88,13 +112,11 @@ public class LivreResource {
     @Transactional
     @DELETE
     @Path("/{id}")
-    public Response deleteById(@PathParam("id") Integer id) {
-        log.debug("Suppression de la matière {} ...", id);
+    public void deleteById(@PathParam("id") Integer id) {
+        log.debug("Suppression du Livre ...");
 
         this.repository.deleteById(id);
 
-        log.debug("Matière supprimée !");
-
-        return Response.noContent().build();
+        log.debug("Livre supprimée !");
     }
 }
