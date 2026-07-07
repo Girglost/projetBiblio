@@ -17,7 +17,7 @@ public class Avis {
 
 	@Id
     @UuidGenerator
-    public String id;
+    public Integer id;
 
     @Column(nullable = false)
     public int note;
@@ -32,11 +32,11 @@ public class Avis {
     @JoinColumn(nullable = false)
     public Livre livre;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

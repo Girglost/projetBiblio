@@ -7,21 +7,21 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import fr.formation.model.Avis;
 
 public class AvisResponse {
-    private String id;
+    private Integer id;
     private int note;
     private String commentaire;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime date;
 
-    private String livreId;
+    private Integer livreId;
     private String livreNom;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -49,11 +49,11 @@ public class AvisResponse {
         this.date = date;
     }
 
-    public String getLivreId() {
+    public Integer getLivreId() {
         return livreId;
     }
 
-    public void setLivreId(String livreId) {
+    public void setLivreId(Integer livreId) {
         this.livreId = livreId;
     }
 

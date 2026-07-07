@@ -1,6 +1,7 @@
 package fr.formation.dto.response;
 
 import fr.formation.enumerator.NationaliteEnum;
+import fr.formation.model.Auteur;
 
 public class AuteurResponse {
     private Integer id;
