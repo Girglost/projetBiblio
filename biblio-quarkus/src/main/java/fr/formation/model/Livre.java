@@ -26,15 +26,15 @@ public class Livre {
     private LocalDate publication;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = false, name="auteur_id")
     private Auteur auteur;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = false, name="editeur_id")
     private Editeur editeur;
 
     @ManyToOne
-    @JoinColumn(nullable = true)
+    @JoinColumn(nullable = true, name="collection_id")
     private Collection collection;
 
     
