@@ -2,9 +2,6 @@ package fr.formation.model;
 
 import java.time.LocalDate;
 
-import org.hibernate.annotations.UuidGenerator;
-
-import io.quarkus.Generated;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
