@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import fr.bibliotek.model.Avis;
+import fr.formation.model.Avis;
 
 public class AvisResponse {
     private String id;
