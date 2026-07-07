@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import fr.bibliotek.model.Livre;
+import fr.formation.model.Livre;
 
 public class LivreResponse {
     private Integer id;
