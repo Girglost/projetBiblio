@@ -65,7 +65,7 @@ private final LivreRepository livreRepo;
         if (avis.getDate() == null) {
             avis.setDate(LocalDateTime.now());
         };
-        avis.setLivre(this.livreRepo.findById(request.getLivreId());
+        avis.setLivre(this.livreRepo.findById(request.getLivreId()));
 
         this.repository.persist(avis);
 
@@ -87,7 +87,7 @@ private final LivreRepository livreRepo;
 
         avis.setNote(request.getNote());
         avis.setCommentaire(request.getCommentaire());
-        avis.setLivre(this.livreRepo.findById(request.getLivreId());
+        avis.setLivre(this.livreRepo.findById(request.getLivreId()));
 
         this.repository.persist(avis);
 

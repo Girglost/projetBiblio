@@ -14,7 +14,7 @@ public class CreateOrUpdateAvisRequest {
     private String commentaire;
 
     @NotBlank
-    private String livreId;
+    private Integer livreId;
 
     public Integer getNote() {
         return note;
@@ -32,11 +32,11 @@ public class CreateOrUpdateAvisRequest {
         this.commentaire = commentaire;
     }
 
-    public String getLivreId() {
+    public Integer getLivreId() {
         return livreId;
     }
 
-    public void setLivreId(String livreId) {
+    public void setLivreId(Integer livreId) {
         this.livreId = livreId;
     }
 }
