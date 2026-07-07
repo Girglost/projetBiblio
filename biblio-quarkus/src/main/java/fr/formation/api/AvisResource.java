@@ -11,6 +11,7 @@ import fr.formation.dto.request.CreateOrUpdateAvisRequest;
 import fr.formation.dto.response.AvisResponse;
 import fr.formation.model.Avis;
 import fr.formation.repo.AvisRepository;
+import fr.formation.repo.LivreRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.DELETE;
@@ -29,10 +30,12 @@ public class AvisResource {
 
 private static Logger log = LoggerFactory.getLogger(AvisResource.class);
 private final AvisRepository repository;
+private final LivreRepository livreRepo;
 
     
-    public AvisResource(AvisRepository repository) {
+    public AvisResource(AvisRepository repository,LivreRepository livreRepo) {
         this.repository = repository;
+        this.livreRepo = livreRepo;
     }
 
     @GET
@@ -62,6 +65,7 @@ private final AvisRepository repository;
         if (avis.getDate() == null) {
             avis.setDate(LocalDateTime.now());
         };
+        avis.setLivre(this.livreRepo.findById(request.getLivreId());
 
         this.repository.persist(avis);
 
@@ -83,6 +87,7 @@ private final AvisRepository repository;
 
         avis.setNote(request.getNote());
         avis.setCommentaire(request.getCommentaire());
+        avis.setLivre(this.livreRepo.findById(request.getLivreId());
 
         this.repository.persist(avis);
 
