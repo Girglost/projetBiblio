@@ -3,6 +3,8 @@ package fr.formation.model;
 import fr.formation.enumerator.NationaliteEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,6 +19,7 @@ public class Editeur {
     @Column(name = "nom", nullable = false)
     private String nom;
     @Column(name = "pays", nullable = false)
+    @Enumerated(EnumType.STRING)
     private NationaliteEnum pays;
 
     public Editeur() {

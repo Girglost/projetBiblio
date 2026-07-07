@@ -3,6 +3,8 @@ package fr.formation.model;
 import fr.formation.enumerator.NationaliteEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,6 +22,7 @@ public class Auteur {
     private String prenom;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private NationaliteEnum nationalite;
 
     public int getId() {

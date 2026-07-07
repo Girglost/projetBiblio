@@ -21,6 +21,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.Response;
 
+@Path("/api/auteur")
 public class AuteurResource {
 
     private static Logger log = LoggerFactory.getLogger(AuteurResource.class);
