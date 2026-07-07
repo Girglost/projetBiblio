@@ -5,51 +5,48 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import fr.formation.dto.request.CreateOrUpdateEditeurRequest;
-import fr.formation.dto.response.EditeurResponse;
+import fr.formation.dto.request.CreateOrUpdateCollectionRequest;
+import fr.formation.dto.response.CollectionResponse;
 import fr.formation.dto.response.EntityCreatedResponse;
 import fr.formation.dto.response.EntityUpdatedResponse;
-import fr.formation.model.Editeur;
-import fr.formation.repo.EditeurRepository;
+import fr.formation.model.Collection;
+import fr.formation.repo.CollectionRepository;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.PathParam;
 
 public class CollectionResource {
     private static Logger log = LoggerFactory.getLogger(EditeurResource.class);
-    private final EditeurRepository repo;
+    private final CollectionRepository repo;
 
-    public EditeurResource(EditeurRepository repo) {
+    public CollectionResource(CollectionRepository repo) {
         this.repo = repo;
     }
 
-    public List<EditeurResponse> findAll() {
-        return this.repo.findAll().stream().map(EditeurResponse::convert).toList();
+    public List<CollectionResponse> findAll() {
+        return this.repo.findAll().stream().map(CollectionResponse::convert).toList();
     }
 
-    public EditeurResponse findById(@PathParam("id") Integer id) {
-        return EditeurResponse.convert(this.repo.findById(id));
+    public CollectionResponse findById(@PathParam("id") Integer id) {
+        return CollectionResponse.convert(this.repo.findById(id));
     }
 
-    public EntityCreatedResponse create(@Valid CreateOrUpdateEditeurRequest request) {
-        log.debug("Création d'un nouvel editeur  ...");
-        Editeur editeur = new Editeur();
+    public EntityCreatedResponse create(@Valid CreateOrUpdateCollectionRequest request) {
+        log.debug("Création d'une nouvelle collection  ...");
+        Collection collection = new Collection();
 
-        editeur.setNom(request.getNom());
-        editeur.setPays(request.getPays());
-        log.debug("Editeur créé !");
-        this.repo.persist(editeur);
-        return new EntityCreatedResponse(editeur.getId());
+        collection.setNom(request.getNom());
+        log.debug("collection créée!");
+        this.repo.persist(collection);
+        return new EntityCreatedResponse(collection.getId());
     }
 
     public EntityUpdatedResponse update(@PathParam("id") Integer id,
-            @Valid CreateOrUpdateEditeurRequest request) {
-        log.debug("UPDATE d'un Editeur ...");
-        Editeur editeur = this.repo.findById(id);
-        editeur.setNom(request.getNom());
-        editeur.setPays(request.getPays());
-
-        this.repo.persist(editeur);
-        log.debug("Editeur Updated ! ");
+            @Valid CreateOrUpdateCollectionRequest request) {
+        log.debug("UPDATE d'une Collection ...");
+        Collection collection = this.repo.findById(id);
+        collection.setNom(request.getNom());
+        this.repo.persist(collection);
+        log.debug("Collection Updated ! ");
         return new EntityUpdatedResponse(id, true);
     }
 
